@@ -10,7 +10,6 @@
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f9;
             color: #333;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
         }
@@ -20,19 +19,41 @@
             padding: 2em 1em;
             text-align: center;
         }
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 1em;
+        }
         header h1 {
             margin-bottom: 0.2em;
         }
-        .container {
-            max-width: 900px;
+        .layout {
+            display: flex;
+            max-width: 1400px;
             margin: auto;
             padding: 2em;
-            background-color: white;
+            gap: 2em;
+        }
+        .left {
+            flex: 2;
+        }
+        .right {
+            flex: 1.2;
+            background: #fff;
+            padding: 1em;
+            border-left: 1px solid #ccc;
         }
         h2 {
             color: #0a192f;
             border-bottom: 2px solid #ddd;
             padding-bottom: 0.3em;
+        }
+        h3 {
+            color: #0a192f;
+            margin-top: 1em;
         }
         ul {
             list-style-type: disc;
@@ -45,17 +66,71 @@
             color: #0a66c2;
             text-decoration: none;
         }
-        .placeholder {
-            color: gray;
-            font-style: italic;
+        /* Strengths card section */
+        .strength-category {
+            margin-bottom: 2em;
+        }
+        .strength-category h3 {
+            margin-bottom: 0.5em;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1em;
+        }
+        .card {
+            background: white;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .card i {
+            font-size: 1.8em;
+            color: #0a66c2;
+            margin-bottom: 0.5em;
+            display: block;
+        }
+        .card h4 {
+            margin: 0.4em 0 0.2em;
+            font-size: 1.1em;
+        }
+        .card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        /* Star skill ratings */
+        .skill-category {
+            margin-bottom: 1.5em;
+        }
+        .skill-category h3 {
+            margin-bottom: 0.5em;
+        }
+        .skill-rating {
+            margin: 5px 0;
+        }
+        .skill-rating span {
+            display: inline-block;
+            width: 140px;
+        }
+        .stars {
+            color: gold;
+            font-size: 1.1em;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header>
+    <img src="profile.jpg" alt="Profile Photo">
     <h1>Parth Kapadia</h1>
-    <p>Software Engineer | Backend, Platform & Distributed Systems</p>
+    <p>Senior Software Engineer | Backend, Platform & Distributed Systems</p>
     <p class="contact">
         📍 United Kingdom |
         📧 <a href="mailto:pk3583.ed@gmail.com">pk3583.ed@gmail.com</a> |
@@ -64,61 +139,118 @@
     </p>
 </header>
 
-<div class="container">
-    <div class="section">
-        <h2>About Me</h2>
-        <p>Experienced software engineer with 9+ years in backend, platform, and distributed systems. Skilled in Python, Golang, Kubernetes, Docker, and Terraform. Proven track record in infrastructure optimization, developer tooling, and full software lifecycle ownership across cloud and on-prem environments.</p>
+<div class="layout">
+    <div class="left">
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Experienced software engineer with 9+ years in backend, platform, and distributed systems. Skilled in Python, Golang, Kubernetes, Docker, and Terraform. Proven track record in infrastructure optimization, developer tooling, and full software lifecycle ownership across cloud and on-prem environments.</p>
+        </div>
+
+        <div class="section">
+            <h2>Soft Skills & Strengths</h2>
+
+            <div class="strength-category">
+                <h3>Leadership</h3>
+                <div class="card-grid">
+                    <div class="card"><i class="fas fa-user-cog"></i><h4>Initiative & Ownership</h4><p>Built India’s on-call program and guided engineers through training and support.</p></div>
+                    <div class="card"><i class="fas fa-balance-scale"></i><h4>Conflict Resolution</h4><p>Resolved internal disagreements by presenting technical evidence, balancing priorities, and aligning teams.</p></div>
+                </div>
+            </div>
+
+            <div class="strength-category">
+                <h3>Technical Mentality</h3>
+                <div class="card-grid">
+                    <div class="card"><i class="fas fa-code-branch"></i><h4>System Design Vision</h4><p>Championed Filesystem 2.0 redesign to eliminate GC inefficiencies, presenting data-driven value to leadership.</p></div>
+                    <div class="card"><i class="fas fa-tools"></i><h4>Engineering for Scale</h4><p>Reduced backup workflows from 2 hours to 15 minutes using concurrency and architectural tuning.</p></div>
+                    <div class="card"><i class="fas fa-bolt"></i><h4>Decisive Under Pressure</h4><p>Handled critical incidents independently with smart, calculated actions—reducing MTTR and service downtime</p></div>
+                    <div class="card"><i class="fas fa-brain"></i><h4>Growth Mindset</h4><p>Self-taught Golang and contributed production-grade code within weeks, driving a full rewrite of legacy systems.</p></div>
+                </div>
+            </div>
+
+            <div class="strength-category">
+                <h3>Collaboration & Advocacy</h3>
+                <div class="card-grid">
+                    <div class="card"><i class="fas fa-users"></i><h4>Team Communication</h4><p>Led cross-team incident management and retrospectives with transparency, accountability, and clarity.</p></div>
+                    <div class="card"><i class="fas fa-user-shield"></i><h4>Customer Focus</h4><p>Implemented proactive dashboards and alerts, boosting user trust and reducing support load.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Projects (some highlights)</h2>
+            <ul>
+                <li><strong>Custom Garbage Collector Service (Pantheon):</strong> Engineered a garbage collection system using Golang, Cassandra, Redis, and GCS that saved over $1M annually in cloud costs.</li>
+                <li><strong>File Orchestration Backend:</strong> Built scalable backend services in Golang deployed on Google Kubernetes Engine for handling file orchestration tasks.</li>
+                <li><strong>Legacy Migration:</strong> Migrated legacy Python (Twisted) systems to Golang, improving reliability and performance.</li>
+                <li><strong>Bank Statement Analytics (Karza):</strong> Designed an AWS-based architecture and backend using Python and MongoDB for analyzing financial documents.</li>
+                <li><strong>RBAC System (Zenefits):</strong> Developed an authorization workflow and RBAC system using Python, Django, and React Native for secure REST API access.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>IT Intern</strong> – <a href="https://www.ligentia.com" target="_blank">Ligentia Global</a>, UK (2025–Present)</li>
+                <li><strong>Senior Software Engineer</strong> – <a href="https://pantheon.io" target="_blank">Pantheon Platform</a>, India (2022–2024)</li>
+                <li><strong>Senior Software Engineer</strong> – <a href="https://pantheon.io" target="_blank">Pantheon Platform (via High Peak Software)</a>, India (2021–2022)</li>
+                <li><strong>Senior Software Engineer</strong> – <a href="https://www.linkedin.com/company/karza-technologies" target="_blank">Karza Technologies</a>, India (2020–2021)</li>
+                <li><strong>Software Engineer</strong> – <a href="https://www.linkedin.com/company/zenefits/" target="_blank">Zenefits (via Sift Consultancy)</a>, India (2018–2020)</li>
+                <li><strong>Systems Engineer</strong> – <a href="https://www.unisys.com" target="_blank">Unisys Corp</a>, India (2014–2018)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>MSc Advanced Computer Science (AI)</strong> – University of Leeds, UK (2024–Present)</li>
+                <li><strong>BTech in Computer Engineering</strong> – Sardar Vallabhbhai National Institute of Technology, India (2010–2014)</li>
+            </ul>
+        </div>
+<!-- 
+        <div class="section">
+            <h2>Resume</h2>
+            <p class="placeholder">[Resume download link will be added here once uploaded]</p>
+        </div> -->
     </div>
 
-    <div class="section">
-        <h2>Skills</h2>
-        <ul>
-            <li><strong>Languages:</strong> Python, Golang, Java, Bash, C, JavaScript, HTML, CSS</li>
-            <li><strong>Databases:</strong> MySQL, PostgreSQL, Cassandra, Redis, MongoDB</li>
-            <li><strong>Cloud/Platform:</strong> GCP, AWS, Terraform, Kubernetes, Docker</li>
-            <li><strong>CICD/Observability:</strong> GitHub, CircleCI, Prometheus, Grafana</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Custom Garbage Collector Service (Pantheon):</strong> Engineered a garbage collection system using Golang, Cassandra, Redis, and GCS that saved over $1M annually in cloud costs.</li>
-            <li><strong>File Orchestration Backend:</strong> Built scalable backend services in Golang deployed on Google Kubernetes Engine for handling file orchestration tasks.</li>
-            <li><strong>Legacy Migration:</strong> Migrated legacy Python (Twisted) systems to Golang, improving reliability and performance.</li>
-            <li><strong>Bank Statement Analytics (Karza):</strong> Designed an AWS-based architecture and backend using Python and MongoDB for analyzing financial documents.</li>
-            <li><strong>RBAC System (Zenefits):</strong> Developed an authorization workflow and RBAC system using Python, Django, and React Native for secure REST API access.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>IT Intern</strong> – Ligentia Global, UK (2025–Present)</li>
-            <li><strong>Senior Software Engineer</strong> – Pantheon Platform, India (2022–2024)</li>
-            <li><strong>Senior Software Engineer</strong> – High Peak Software (Pantheon), India (2021–2022)</li>
-            <li><strong>Senior Software Engineer</strong> – Karza Technologies, India (2020–2021)</li>
-            <li><strong>Software Engineer</strong> – Sift Consultancy (Zenefits), India (2018–2020)</li>
-            <li><strong>Systems Engineer</strong> – Unisys, India (2014–2018)</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Education</h2>
-        <ul>
-            <li><strong>MSc Advanced Computer Science (AI)</strong> – University of Leeds, UK (2024–Present)</li>
-            <li><strong>BTech in Computer Engineering</strong> – SVNIT, India (2010–2014)</li>
-        </ul>
-    </div>
-
-<!--     <div class="section">
-        <h2>Resume</h2>
-        <p class="placeholder">[Resume download link will be added here once uploaded]</p>
-    </div> -->
-
-    <div class="section">
-        <h2>Photo</h2>
-        <img src="DP.jpeg" alt="Profile Photo" style="width:200px;border-radius:12px;">
+    <div class="right">
+        <div class="section">
+            <h2>Tech Skills</h2>
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-rating"><span>Python</span><span class="stars">★★★★★</span></div>
+                <div class="skill-rating"><span>Golang</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Java</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Bash</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>C</span><span class="stars">★★★☆☆</span></div>
+                <div class="skill-rating"><span>JavaScript</span><span class="stars">★★★☆☆</span></div>
+                <div class="skill-rating"><span>HTML</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>CSS</span><span class="stars">★★★☆☆</span></div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-rating"><span>MySQL</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>PostgreSQL</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Cassandra</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Redis</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>MongoDB</span><span class="stars">★★★☆☆</span></div>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud / Platform</h3>
+                <div class="skill-rating"><span>GCP</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>AWS</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Terraform</span><span class="stars">★★★☆☆</span></div>
+                <div class="skill-rating"><span>Kubernetes</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Docker</span><span class="stars">★★★★☆</span></div>
+            </div>
+            <div class="skill-category">
+                <h3>CICD / Observability</h3>
+                <div class="skill-rating"><span>GitHub</span><span class="stars">★★★★★</span></div>
+                <div class="skill-rating"><span>CircleCI</span><span class="stars">★★★★★</span></div>
+                <div class="skill-rating"><span>Prometheus</span><span class="stars">★★★★☆</span></div>
+                <div class="skill-rating"><span>Grafana</span><span class="stars">★★★★☆</span></div>
+            </div>
+        </div>
     </div>
 </div>
 
